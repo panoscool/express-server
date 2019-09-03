@@ -1,24 +1,28 @@
-const express = require("express");
-const app = express();
+const express = require('express');
+const mongoose = require('mongoose');
+const cookieSession = require('cookie-session');
+const passport = require('passport');
+const keys = require('./config/keys');
+require('./models/Users');
+require('./services/google');
 
-app.get("/api/bicycles", (req, res) => {
-  res.send({ get: "show all items" });
-});
+// mongoose.connect(keys.mongoURI);
 
-app.get("/api/bicycle/:id", (req, res) => {
-  res.send({ get: "show single item" });
-});
+const app = express(keys.mongoURI);
 
-app.post("/api/bicycle", (req, res) => {
-  res.send({ post: "add item" });
-});
+app.use(
+  cookieSession({
+    maxAge: 30 * 24 * 60 * 60 * 1000,
+    keys: [keys.cookieKey]
+  })
+);
 
-app.put("/api/bicycle/:id", (req, res) => {
-  res.send({ put: "edit item" });
-});
+app.use(passport.initialize());
+app.use(passport.session());
 
-app.delete("/api/bicycle/:id", (req, res) => {
-  res.send({ delete: "delete item" });
-});
+require('./routes/authRoutes')(app);
+require('./routes/dbRoutes')(app);
 
-app.listen(5000);
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT);
