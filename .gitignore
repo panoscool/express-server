@@ -4,5 +4,3 @@
 # api keys
 .env
 
-# dev keys
-dev.js

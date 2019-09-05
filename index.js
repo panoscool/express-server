@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express');
 const mongoose = require('mongoose');
 const cookieSession = require('cookie-session');
@@ -6,7 +7,9 @@ const keys = require('./config/keys');
 require('./models/Users');
 require('./services/google');
 
-mongoose.connect(keys.mongoURI);
+mongoose.connect(keys.mongoURI, {
+  useNewUrlParser: true
+});
 
 const app = express(keys.mongoURI);
 
