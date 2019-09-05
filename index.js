@@ -7,17 +7,14 @@ const keys = require('./config/keys');
 require('./models/Users');
 require('./services/google');
 
-mongoose.connect(keys.mongoURI, {
-  useNewUrlParser: true
-});
+mongoose.connect(keys.mongoURI);
 
-const app = express(keys.mongoURI);
+const app = express();
 
-app.use(
-  cookieSession({
-    maxAge: 30 * 24 * 60 * 60 * 1000,
-    keys: [keys.cookieKey]
-  })
+app.use(cookieSession({
+  maxAge: 30 * 24 * 60 * 60 * 1000,
+  keys: [keys.cookieKey]
+})
 );
 
 app.use(passport.initialize());
