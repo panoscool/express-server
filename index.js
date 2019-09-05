@@ -6,7 +6,7 @@ const keys = require('./config/keys');
 require('./models/Users');
 require('./services/google');
 
-// mongoose.connect(keys.mongoURI);
+mongoose.connect(keys.mongoURI);
 
 const app = express(keys.mongoURI);
 
