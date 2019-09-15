@@ -1,28 +1,28 @@
 export const types = {
+  offer: String, // required
   variant: String,
-  owners: Number,
-  price: Number,
-  frameSize: Number,
-  rimSize: Number,
   description: String,
   youTube: String,
-  password: String,
-  userName: String,
+  password: String, // required
+  userName: String, // required
   email: String,
-  phone1: Number,
-  location: String,
-  year: Number,
-  offer: Number,
-  category: String,
-  manufacturer: String,
-  condition: String,
+  location: String, // required
+  category: String, // required
+  manufacturer: String, // required
+  condition: String, // required
   frameType: String,
-  gears: Number,
   color: String,
   brakes: String,
-  duration: Number,
   exchange: String,
-  month: Number,
+  phone1: Number, // required
+  year: Number, // required
+  gears: Number,
+  duration: Number, // required
+  owners: Number,
+  price: Number, // required
+  frameSize: Number,
+  rimSize: Number,
+  month: Number, // required
   negotiable: Boolean,
   womens: Boolean,
   mens: Boolean,
